@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyledText } from '../misc/StyledComponents';
-import { ToastAndroid, TouchableOpacity } from 'react-native';
-
+import {  TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 function NoteCard({ item, onDelete }) {
     const { titler, noter } = item;
+    const navigation = useNavigation();
+
     return (
         <TouchableOpacity onPress={() =>
-            ToastAndroid.show("Pressing", ToastAndroid.show)
-
-        }
+           navigation.navigate('EditNoteScreen', { noteId: item.id, title: item.titler, content: item.noter })}
             onLongPress={onDelete}
             style={{
                 backgroundColor: '#fff', alignItems: 'flex-start', paddingLeft: 10, width: '50%',

@@ -22,7 +22,7 @@ function ListScreen({ navigation }) {
     <SafeAreaView>
       <StyledView className='flex min-h-screen bg-primary'>
         <StyledView className='mt-5  ml-2 p-1 mx-1'>
-          {/**have to put the NoteList Component here */}
+          
           <FlatList
             data={items}
             numColumns={2}

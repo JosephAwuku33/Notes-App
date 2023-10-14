@@ -53,4 +53,27 @@ export async function deleteNote(noteId, navigation) {
   }
 }
 
+export async function editNote(noteId, newTitle, newContent, setNotes) {
+  try {
+    let notes = await AsyncStorage.getItem('notes');
+    notes = JSON.parse(notes); // Parse the JSON string to get the array of notes
+
+    const updatedNotes = notes.map(note => {
+      if (note.id === noteId) {
+        return { ...note, titler: newTitle, noter: newContent };
+      } else {
+        return note;
+      }
+    });
+
+    setNotes(updatedNotes);
+    await AsyncStorage.setItem('notes', JSON.stringify(updatedNotes));
+    ToastAndroid.show("Note updated successfully", ToastAndroid.SHORT);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
 
